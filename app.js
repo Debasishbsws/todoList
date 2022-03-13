@@ -1,13 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const res = require("express/lib/response");
 
 
 const app = express(); // app is using express
 
 app.set('view engine', 'ejs'); //setting the view engine of EJS to be used by express app
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//globlas
+let items = ["Bye Food","Cook Food","Eat Food"];
 
 //get request on ot the root directory
 app.get("/", function (req, res) {
@@ -19,13 +21,15 @@ app.get("/", function (req, res) {
         year: "numeric",
     }
     let today = date.toLocaleDateString("en-IN", options);
-
-    res.render("index", { day: today });
+    
+    // rendering the initial page
+    res.render("index", { day: today , newListItems: items});
 
 });
 
 app.post("/", function (req, res) {
-    console.log(req.body.todoItem);
+    // console.log(req.body.todoItem);
+    items.push(req.body.todoItem);
     res.redirect("/"); 
 });
 

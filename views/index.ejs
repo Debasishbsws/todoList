@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
   </head>
+
   <body>
     <h1><%= day %> TODO List..</h1>
     <ul>
-      <li>Bye Food</li>
-      <li>Cook Food</li>
-      <li>Eat Food</li>
+      <% for(let i=0 ; i < newListItems.length ; i++){ %>
+      <li><%= newListItems[i] %></li>
+      <% } %>
+
       <form action="/" method="post">
-          <input type="text" name="todoItem" id="todoItem">
-          <button type="submit" name="button">Add</button>
+        <input type="text" name="todoItem" id="todoItem" />
+        <button type="submit" name="button">Add</button>
       </form>
     </ul>
   </body>
