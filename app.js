@@ -11,26 +11,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 //globlas
-let items = ["Bye Food", "Cook Food", "Eat Food"];
+let items = ["Sleep", "Code", "Wake up",];
 
 //get request on ot the root directory
 app.get("/", function (req, res) {
     let date = new Date();
-    const options = {
-        weekday: "long",
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-    }
-    let today = date.toLocaleDateString("en-IN", options);
+    const options1 = { month: "short", year: "numeric", }
+    const options2 = { weekday: "long" };
+    const options3 = { day: "numeric" };
+    let monthYear = date.toLocaleDateString("en-IN", options1);
+    let weekDay = date.toLocaleDateString("en-IN", options2);
+    let dateNum = date.toLocaleDateString("en-IN", options3);
 
     // rendering the initial page
-    res.render("index", { day: today, newListItems: items });
+    res.render("index", {
+        week_day: weekDay, month_year: monthYear, date_num: dateNum, newListItems: items
+    });
 
 });
 
 app.post("/", function (req, res) {
-    // console.log(req.body.todoItem);
     items.push(req.body.todoItem);
     res.redirect("/");
 });
