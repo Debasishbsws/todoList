@@ -5,19 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
   </head>
 
   <body>
-    <h1><%= day %> TODO List..</h1>
-    <ul>
-      <% for(let i=0 ; i < newListItems.length ; i++){ %>
-      <li><%= newListItems[i] %></li>
-      <% } %>
-
-      <form action="/" method="post">
-        <input type="text" name="todoItem" id="todoItem" />
-        <button type="submit" name="button">Add</button>
-      </form>
-    </ul>
+    <div class="background">
+      <!-- <h1 calss="todoText">TODO List</h1> -->
+      <div class="card center">
+        <div class="date-card">
+          <div class="day-div">
+            <h1 class="day">Monday</h1>
+            <!-- %= dayOfWeek %> -->
+          </div>
+          <div id="gap"></div>
+          <div class="date-div">
+            <p id="date"> <span id="date-number" style="color:rgb(63, 63, 63);"">12</span> <span style="color:rgb(104, 104, 104);"> Jan 2022</span></p>
+            <!-- %= date %> -->
+          </div>
+        </div>
+        <div class="add-item-div">
+        <form action="/" method="post">
+          <div>
+            <button type="submit" name="button" class= "btn">+ Add</button>
+          </div>
+          <input class="text-input" type="text" name="todoItem" id="todoItem" required minlength="1" />
+          
+        </form>
+      </div>
+        <div class="list">
+        <ul style="list-style-type: none;padding: 0;">
+          <li class="list-item" style="border-top-right-radius: 15px;
+          border-top-left-radius: 15px;"> <%= newListItems[newListItems.length -1] %> </li>
+          <% for(let i=newListItems.length -2 ; i >= 1 ; i--){ %>
+          <li class="list-item"> <%= newListItems[i] %> </li>
+          <% } %>
+          <li class="list-item"style="border-bottom-right-radius: 15px;
+          border-bottom-left-radius: 15px;"> <%= newListItems[0] %> </li>
+        </ul>
+      </div>
+      </div>
+    </div>
   </body>
 </html>
