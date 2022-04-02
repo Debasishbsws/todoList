@@ -12,6 +12,14 @@ h1 {
   color: #94b3fd;
 }
 
+input:checked+p{
+  text-decoration: line-through;
+  text-decoration-color: #8a39e1;
+}
+
+input[type="checkbox"] {
+  margin: 5%;
+}
 .background {
   text-align: center;
   height: 100%;
@@ -28,7 +36,7 @@ h1 {
   width: 30%;
   z-index: 2;
   background-color: #faedff;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .card:hover {
@@ -61,30 +69,37 @@ h1 {
 }
 
 .text-input {
-  /* margin: auto; */
-  margin-top: 20px;
   text-align: center;
   background-color: #ffffff;
   border: 0px solid;
   height: 40px;
   width: 75%;
-  border-radius: 10px;
+  border-radius: 10px; 
   box-shadow: 0 8px 16px 1px #bb7bff;
+  margin-bottom: 10px;
 }
 .list {
   width: 75%;
+  height: 65%;
   margin: 0 auto;
+  overflow-y: scroll;
 }
 .list-item {
   color: rgb(92, 91, 91);
-  text-align: center;
+  text-align: left;
   background-color: #ffffff;
   border: 0px solid;
   font-size: 1.2rem;
   padding: 10px;
 
-  box-shadow: 0 8px 16px 1px #bb7bff;
+  box-shadow: 2px 8px 16px 1px #bb7bff;
 }
+
+.list-item p{
+  display: inline;
+}
+
+
 
 #date {
   margin-top: 25px;
@@ -99,6 +114,7 @@ h1 {
 }
 
 .btn {
+  margin-top: 10px;
   border: 0px solid;
   background: #ffadf0;
   background-image: -webkit-linear-gradient(top, #ffadf0, #8a39e1);

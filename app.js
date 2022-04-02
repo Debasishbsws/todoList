@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js");
 
 
 const app = express(); // app is using express
@@ -15,17 +16,17 @@ let items = ["Sleep", "Code", "Wake up",];
 
 //get request on ot the root directory
 app.get("/", function (req, res) {
-    let date = new Date();
-    const options1 = { month: "short", year: "numeric", }
-    const options2 = { weekday: "long" };
-    const options3 = { day: "numeric" };
-    let monthYear = date.toLocaleDateString("en-IN", options1);
-    let weekDay = date.toLocaleDateString("en-IN", options2);
-    let dateNum = date.toLocaleDateString("en-IN", options3);
+    // let date = new Date();
+    // const options1 = { month: "short", year: "numeric", }
+    // const options2 = { weekday: "long" };
+    // const options3 = { day: "numeric" };
+    let monthYear = date.monthYear();
+    let weekDay = date.weekDay();
+    let dateNum = date.dateNum();
 
     // rendering the initial page
     res.render("index", {
-        week_day: weekDay, month_year: monthYear, date_num: dateNum, newListItems: items
+        week_day: weekDay, month_year: monthYear, date_num: dateNum, listItems: items
     });
 
 });

@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-  </head>
 
-  <body>
-    <div class="background">
-      <!-- <h1 calss="todoText">TODO List</h1> -->
-      <div class="card center">
-        <div class="date-card">
-          <div class="day-div">
-            <h1 class="day"><%= week_day %></h1>
-            <!-- %= dayOfWeek %> -->
-          </div>
-          <div id="gap"></div>
-          <div class="date-div">
-            <p id="date"> <span id="date-number" style="color:rgb(63, 63, 63);""><%= date_num %></span> <span style="color:rgb(104, 104, 104);"><%= month_year %></span></p>
-            <!-- %= date %> -->
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+</head>
+
+<body>
+  <div class="background">
+    <!-- <h1 calss="todoText">TODO List</h1> -->
+    <div class="card center">
+      <div class="date-card">
+        <div class="day-div">
+          <h1 class="day">
+            <%= week_day %>
+          </h1>
         </div>
+        <div id="gap"></div>
+        <div class="date-div">
+          <p id="date"> <span id="date-number" style="color:rgb(63, 63, 63);""><%= date_num %></span> <span style="
+              color:rgb(104, 104, 104);">
+              <%= month_year %>
+            </span></p>
+        </div>
+      </div>
+
+      <div class="list">
         <div class="add-item-div">
-        <form action="/" method="post">
-          <div>
-            <button type="submit" name="button" class= "btn">+ Add</button>
-          </div>
-          <input class="text-input" type="text" name="todoItem" id="todoItem" required minlength="1" />
-          
-        </form>
+          <% for(let i=0; i <listItems.length;i++) {%>
+            <div class="list-item">
+              <input type="checkbox">
+              <p>
+                <%=listItems[i]%>
+              </p>
+            </div>
+            <% } %>
+        </div>
       </div>
-        <div class="list">
-        <ul style="list-style-type: none;padding: 0;">
-          <li class="list-item" style="border-top-right-radius: 15px;
-          border-top-left-radius: 15px;"> <%= newListItems[newListItems.length -1] %> </li>
-          <% for(let i=newListItems.length -2 ; i >= 1 ; i--){ %>
-          <li class="list-item"> <%= newListItems[i] %> </li>
-          <% } %>
-          <li class="list-item"style="border-bottom-right-radius: 15px;
-          border-bottom-left-radius: 15px;"> <%= newListItems[0] %> </li>
-        </ul>
-      </div>
-      </div>
+      <!-- form for taking input  -->
+      <form action="/" method="post">
+        <input class="text-input" type="text" name="todoItem" placeholder="New Item" required minlength="1"
+          autocomplete="off" />
+        <div>
+          <button type="submit" name="button" class="btn">+ Add</button>
+        </div>
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
