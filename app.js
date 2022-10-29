@@ -1,6 +1,10 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
+
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 
 const app = express(); // app is using express
@@ -37,9 +41,7 @@ app.post("/", function (req, res) {
 });
 
 
-
-
 //express app listening to port
-app.listen(8080, function () {
-    console.log("Server is running on port 8080")
+app.listen(PORT, HOST, () => {
+    console.log("Server is running on port " + PORT)
 });
