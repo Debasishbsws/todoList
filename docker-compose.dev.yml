@@ -1,0 +1,13 @@
+version: '3'
+services:
+  to-do-app:
+    build:
+      context: .
+      args:
+        - NODE_ENV=devlopement
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=devlopement
+    command: npm run dev
